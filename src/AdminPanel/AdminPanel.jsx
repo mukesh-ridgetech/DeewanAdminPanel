@@ -31,11 +31,15 @@ import Fencing from "../Master/Fencing";
 import Parking from "../Master/Parking";
 import Neighbourhood from "../Master/Neighbourhood";
 import Transition from "../Master/Transition";
+import PropertiesDetails from "./PropertiesDetails";
+// properties-details
 
+import Properties from "./Properties";
 import logo from '../../public/images/dewanLogo.png'
 
 const AdminPanel = () => {
   const [selectedTab, setSelectedTab] = useState("dashboard");
+  const[id,setId] = useState();
  const navigate= useNavigate();
 
   const handleMenuClick = (e) => {
@@ -89,6 +93,12 @@ const AdminPanel = () => {
 
         case "transition-master":
         return <Transition />;
+
+        case "properties":
+        return <Properties setSelectedTab={setSelectedTab}  setId={setId}/>;
+
+        case "properties-details":
+        return <PropertiesDetails id={id}/>;
         
     }
   };
@@ -96,6 +106,7 @@ const AdminPanel = () => {
   const menuItems = [
     // { key: "home", icon: <TeamOutlined />, label: "Home" },
     { key: "users", icon: <TeamOutlined />, label: "Users" },
+    { key: "properties", icon: <CarryOutOutlined />, label: "Properties" },
     {
       key: "master-card",
       icon: <TeamOutlined />,

@@ -71,3 +71,32 @@
   margin: 0;
   min-height: 280px;
 }
+
+.properties-container{
+  display: flex;
+  gap: 40px;
+}
+
+.properties-left{
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.properties-right{
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.properties-left-left{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.properties-left-right{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
