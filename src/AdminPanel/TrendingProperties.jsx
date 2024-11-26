@@ -38,7 +38,7 @@ const TrendingProperties = () => {
   const [photo, setPhoto] = useState("");
   const [imageTrue,setImageTrue] = useState(false);
   // const [selectedLocation, setSelectedLocation] = useState("");
-  const [location,setLocation] = useState();
+  const [location,setLocation] = useState(null);
   const [properties,setProperties] = useState();
   const [filteredProperties, setFilteredProperties] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState(null);
@@ -56,7 +56,24 @@ const TrendingProperties = () => {
     fetchTrendingProperties();
     fetchLocation();
     fetchProperties();
+
+    
   }, []);
+
+
+  // useEffect(()=>{
+  //   const filteredLocations = location?.filter(
+  //     (loc) => !data?.some((d) => d?.location?._id === loc._id)
+  //   );
+
+  //   // console.log("filteredLocations",filteredLocations)
+  //   setLocation(filteredLocations)
+  // },[location])
+
+
+
+  // console.log("trending Properties",data)
+  // console.log("location",location)
 
   const fetchTrendingProperties = async () => {
     setLoading(true);
@@ -82,9 +99,16 @@ const TrendingProperties = () => {
   const fetchLocation = async()=>{
            try {
               const response =  await axios.get(baseurl + '/api/locations/getLoacation');
-              // console.log(response.data.locations);
+              console.log(response.data.locations);
 
               if(response.data){
+
+
+                const filteredLocations = response?.data?.locations?.filter(
+                  (loc) => !data?.some((d) => d?.location?._id === loc._id)
+                );
+
+                // console.log("filteredLocations",filteredLocations)
                 setLocation(response.data.locations)
               }
               
@@ -97,7 +121,7 @@ const TrendingProperties = () => {
   const fetchProperties = async()=>{
      try {
          const response = await axios.get(baseurl +'/api/properties/getProperties');
-         console.log(response.data)
+        //  console.log(response.data)
 
          if(response.data){
           setProperties(response.data)
@@ -120,7 +144,14 @@ const TrendingProperties = () => {
     setFilteredProperties(filtered);
   };
 
-  console.log("filteredProperties",filteredProperties);
+  useEffect(()=>{
+    if(selectedLocation){
+      const filtered = properties.filter((property) => property.location?._id === selectedLocation);
+    setFilteredProperties(filtered);
+    }
+  },[selectedLocation])
+
+  // console.log("filteredProperties",filteredProperties);
 
 
   const handlePropertiesChange = (value) => {
@@ -135,13 +166,15 @@ const TrendingProperties = () => {
   };
 
   const handleEdit = (record) => {
+
+    const filtered = properties.filter((property) => property.location?._id === record?.location?._id);
+    setFilteredProperties(filtered);
     setImageTrue(true)
     setEditingTrendingProperties(record);
+    console.log("record is now",record)
     form.setFieldsValue({
-      country:record.country,
-      state:record.state,
-      city:record.city,
-      sector:record.sector,
+      location:record?.location._id,
+      properties:record?.properties?.map((item) => item._id),
     });
     setIsModalOpen(true);
   };
@@ -185,23 +218,20 @@ const TrendingProperties = () => {
   const handlePost = async(values)=>{
    
 
-    console.log(values);
+    // console.log(values);
 
     const postdata={
-      country:values.country,
-      state:values.state,
-      city:values.city,
-      sector:values.sector,
-      createdBy:auth.user._id,
+      location:values.location,
+      properties:values.properties
     }
      
 
     try {
-      const response = await axios.post(baseurl+'/api/locations/createlocation',postdata);
+      const response = await axios.post(baseurl+'/api/trending/createTrending',postdata);
       console.log(response.data);
 
       if(response.data){
-        message.success("Location created successfully!");
+        message.success("Trending Properties Created Successfully!");
         setIsModalOpen(false);
         // setPhoto("");
         fetchTrendingProperties()
@@ -220,23 +250,20 @@ const TrendingProperties = () => {
 
   const handlePut = async(values)=>{
     const postdata={
-      country:values.country,
-      state:values.state,
-      city:values.city,
-      sector:values.sector,
-      createdBy:auth.user._id,
+      location:values.location,
+      properties:values.properties
     }
      
 
     try {
-      const response = await axios.put(`${baseurl}/api/locations/updatelocation/${editingTrendingProperties._id}`,postdata);
-      console.log(response.data);
+      const response = await axios.put(`${baseurl}/api/trending/updateTrending/${editingTrendingProperties._id}`,postdata);
+      // console.log(response.data);
 
       if(response.data){
-        message.success("Location update successfully!");
+        message.success("Trending Properties Update Successfully!");
         setIsModalOpen(false);
         // setPhoto("");
-        fetchAllLocation()
+        fetchTrendingProperties()
       }
 
   } catch (error) {
@@ -358,9 +385,11 @@ const TrendingProperties = () => {
     placeholder="Select Properties"
     value={selectedLocation}
     onChange={handlePropertiesChange}
-  >
+  >      {console.log("filteredProperties",filteredProperties)}
+
          {filteredProperties?.map((property) => (
             <Option key={property._id} value={property._id}>
+              {console.log("property.propertiesName",property)}
               {property.propertiesName}
             </Option>
           ))}
