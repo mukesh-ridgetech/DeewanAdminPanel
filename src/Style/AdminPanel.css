@@ -100,3 +100,7 @@
   flex-direction: column;
   gap: 20px;
 }
+
+.ant-input-number-outlined{
+  width: 100% !important;
+}

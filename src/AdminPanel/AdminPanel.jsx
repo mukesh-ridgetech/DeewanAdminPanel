@@ -13,6 +13,7 @@ import {
   HomeOutlined,
   WarningOutlined,
   TruckOutlined,
+  CalendarOutlined,
 } from "@ant-design/icons";
 import Home from "./Home";
 import Personal from "./Personal";
@@ -32,6 +33,8 @@ import Parking from "../Master/Parking";
 import Neighbourhood from "../Master/Neighbourhood";
 import Transition from "../Master/Transition";
 import PropertiesDetails from "./PropertiesDetails";
+import Testinomial from "./Testinomial";
+import TrendingProperties from "./TrendingProperties";
 // properties-details
 
 import Properties from "./Properties";
@@ -99,6 +102,13 @@ const AdminPanel = () => {
 
         case "properties-details":
         return <PropertiesDetails id={id}/>;
+
+        case "testinomial":
+        return <Testinomial/>;
+
+
+        case "trendingProperties":
+        return <TrendingProperties/>;
         
     }
   };
@@ -107,6 +117,9 @@ const AdminPanel = () => {
     // { key: "home", icon: <TeamOutlined />, label: "Home" },
     { key: "users", icon: <TeamOutlined />, label: "Users" },
     { key: "properties", icon: <CarryOutOutlined />, label: "Properties" },
+    { key: "testinomial", icon: <CalendarOutlined />, label: "Testinomial" },
+    { key: "trendingProperties", icon: <EnvironmentOutlined />, label: "Trending Properties" },
+    // EnvironmentOutlined
     {
       key: "master-card",
       icon: <TeamOutlined />,
