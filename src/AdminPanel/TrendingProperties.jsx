@@ -303,18 +303,18 @@ const TrendingProperties = () => {
     
 
 
-    {
-      title: "Status",
-      key: "Status",
-      render: (_, record) => (
-        <Switch
-          checked={record.Status === "Active"}
-          // onChange={() => handleStatusToggle(record)}
-          checkedChildren="Active"
-          unCheckedChildren="Inactive"
-        />
-      ),
-    },
+    // {
+    //   title: "Status",
+    //   key: "Status",
+    //   render: (_, record) => (
+    //     <Switch
+    //       checked={record.Status === "Active"}
+    //       // onChange={() => handleStatusToggle(record)}
+    //       checkedChildren="Active"
+    //       unCheckedChildren="Inactive"
+    //     />
+    //   ),
+    // },
 
     {
       title: "Actions",
