@@ -54,11 +54,11 @@ const Fencing = () => {
     setLoading(true);
     try {
        const respons = await axios.get( baseurl+'/api/fencing/getFacing')
-    //    console.log(respons.data.newFacing);
+       console.log(respons.data);
 
-       if(respons.data.success){
-        setData(respons.data.newFacing);
-        message.success('Fencing fetched successfully!');
+       if(respons.data){
+        setData(respons.data);
+        // message.success('Fencing fetched successfully!');
        }
      
     //   message.success('Country codes fetched successfully!');

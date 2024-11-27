@@ -53,11 +53,11 @@ const Furnished = () => {
     setLoading(true);
     try {
        const respons = await axios.get( baseurl+'/api/furnished/getFurnished')
-       console.log(respons.data.newFurnished);
+       console.log(respons.data);
 
-       if(respons.data.success){
-        setData(respons.data.newFurnished);
-        message.success('Furnised fetched successfully!');
+       if(respons.data){
+        setData(respons.data);
+        // message.success('Furnised fetched successfully!');
        }
      
     //   message.success('Country codes fetched successfully!');
@@ -124,6 +124,8 @@ const Furnished = () => {
     try {
       const response = await axios.post(baseurl+'/api/furnished/createFurnished',postdata);
       console.log(response.data);
+
+      
 
       if(response.data){
         message.success("Furnished created successfully!");

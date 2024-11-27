@@ -98,7 +98,7 @@ const Location = () => {
 
        if(respons.data.success){
         setData(respons.data.locations);
-        message.success('Location fetched successfully!');
+        // message.success('Location fetched successfully!');
        }
      
     //   message.success('Country codes fetched successfully!');

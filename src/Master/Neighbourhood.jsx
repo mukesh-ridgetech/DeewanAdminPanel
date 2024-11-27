@@ -77,7 +77,7 @@ const Neighbourhood = () => {
 
        if(respons.data.success){
         setData(respons.data.newNeighborhood);
-        message.success('Neighbourhood fetched successfully!');
+        // message.success('Neighbourhood fetched successfully!');
        }
      
     //   message.success('Country codes fetched successfully!');

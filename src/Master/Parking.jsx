@@ -58,7 +58,7 @@ const Parking = () => {
 
        if(respons.data.success){
         setData(respons.data.newParking);
-        message.success('Parking fetched successfully!');
+        // message.success('Parking fetched successfully!');
        }
      
     //   message.success('Country codes fetched successfully!');

@@ -45,7 +45,7 @@ const Amenties = () => {
 
        if(respons.data.success){
         setData(respons.data.amenities);
-        message.success('Amenities fetched successfully!');
+        // message.success('Amenities fetched successfully!');
        }
      
     //   message.success('Country codes fetched successfully!');

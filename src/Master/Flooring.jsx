@@ -57,7 +57,7 @@ const Flooring = () => {
 
        if(respons.data.success){
         setData(respons.data.newFloring);
-        message.success('Flooring fetched successfully!');
+        // message.success('Flooring fetched successfully!');
        }
      
     //   message.success('Country codes fetched successfully!');
