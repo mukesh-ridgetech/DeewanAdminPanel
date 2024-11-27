@@ -1185,7 +1185,7 @@ const [mapCenter, setMapCenter] = useState([0, 0]); // Initial state with two nu
             <Input
               value={neighbourhood.type}
               onChange={(e) => handleNeighbourhoodChange(neighbourhoodIndex, 'type', e.target.value)}
-              placeholder="e.g. Residential"
+              placeholder="e.g. Transit"
             />
           </Form.Item>
 
@@ -1198,7 +1198,7 @@ const [mapCenter, setMapCenter] = useState([0, 0]); // Initial state with two nu
     onChange={(e) =>
       handleTransitionValueChange(neighbourhoodIndex, transitionIndex, undefined, 'TypeOfType', e.target.value)
     }
-    placeholder="e.g. Proximity"
+    placeholder="e.g. Bus Stations"
   />
 </Form.Item>
 
@@ -1336,7 +1336,7 @@ const [mapCenter, setMapCenter] = useState([0, 0]); // Initial state with two nu
         <Input
           value={overview.value}
           onChange={(e) => handleOverviewChange(index, 'value', e.target.value)}
-          placeholder="e.g. Property description"
+          placeholder="e.g. Overview Value"
         />
       </Form.Item>
     )}
@@ -1579,7 +1579,7 @@ const [mapCenter, setMapCenter] = useState([0, 0]); // Initial state with two nu
               </>):(<>
                   
                 <Form.Item
-              label="Camellias Image"
+              label="Floor Plan Image"
               name="camelliasImage"
               onChange={(e) => setPhoto(e.target.files[0])}
               
@@ -1621,7 +1621,7 @@ const [mapCenter, setMapCenter] = useState([0, 0]); // Initial state with two nu
             
             
               <Form.Item
-              label="Camellias Image"
+              label="Floor Plan"
               name="camelliasImage"
               onChange={(e) => setPhoto(e.target.files[0])}
             >

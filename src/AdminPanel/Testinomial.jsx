@@ -156,7 +156,7 @@ const Testinomial = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/amenities/uploadImage",
+        `${baseurl}/api/amenities/uploadImage`,
         formData,
         {
           headers: {
