@@ -261,8 +261,8 @@ const handleCategoryChange = async (index, category) => {
 
 const fetchDropdownData = async (category) => {
   const apiEndpoints = {
-    furnished: 'http://localhost:5000/api/furnished/getFurnished',
-    flooring: 'http://localhost:5000/api/fencing/getFacing',
+    furnished: `${baseurl}/api/furnished/getFurnished`,
+    flooring: `${baseurl}/api/fencing/getFacing`,
   };
 
   if (!apiEndpoints[category]) {
@@ -728,7 +728,7 @@ const [mapCenter, setMapCenter] = useState([0, 0]); // Initial state with two nu
       console.log(response.data);
 
       if(response.data){
-        message.success("Amenties created successfully!");
+        message.success("Properties Created Successfully!");
         setIsModalOpen(false);
         setPhoto("");
         fetchAllProperties()
@@ -796,7 +796,7 @@ const [mapCenter, setMapCenter] = useState([0, 0]); // Initial state with two nu
       console.log(response.data);
 
       if(response.data){
-        message.success("Amenties created successfully!");
+        message.success("Properties Updated Successfully!");
         setIsModalOpen(false);
         setPhoto("");
         fetchAllProperties()
@@ -1321,9 +1321,9 @@ const [mapCenter, setMapCenter] = useState([0, 0]); // Initial state with two nu
         placeholder="Select Input Type"
       >
         <Option value="text">Text</Option>
-        <Option value="number">Number</Option>
+        {/* <Option value="number">Number</Option> */}
         <Option value="dropdown">Dropdown</Option>
-        <Option value="boolean">Boolean</Option>
+        {/* <Option value="boolean">Boolean</Option> */}
       </Select>
     </Form.Item>
 
@@ -1341,7 +1341,7 @@ const [mapCenter, setMapCenter] = useState([0, 0]); // Initial state with two nu
       </Form.Item>
     )}
 
-    {overview.inputType === 'number' && (
+    {/* {overview.inputType === 'number' && (
       <Form.Item
         label="Value (Number)"
         rules={[{ required: true, message: 'Please input a value' }]}
@@ -1353,7 +1353,7 @@ const [mapCenter, setMapCenter] = useState([0, 0]); // Initial state with two nu
           placeholder="e.g. 500"
         />
       </Form.Item>
-    )}
+    )} */}
 
     {/* {overview.inputType === 'dropdown' && (
 
@@ -1418,7 +1418,7 @@ const [mapCenter, setMapCenter] = useState([0, 0]); // Initial state with two nu
 )}
 
 
-    {overview.inputType === 'boolean' && (
+    {/* {overview.inputType === 'boolean' && (
       <Form.Item label="Value (Boolean)">
         <Switch
           checked={overview.value === 'true'}
@@ -1427,7 +1427,7 @@ const [mapCenter, setMapCenter] = useState([0, 0]); // Initial state with two nu
           }
         />
       </Form.Item>
-    )}
+    )} */}
 
     {/* Remove Button */}
     <Button
