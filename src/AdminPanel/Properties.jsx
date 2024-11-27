@@ -285,7 +285,7 @@ const handleUpload = async (file) => {
   formData.append('image', file.file);
 
   try {
-    const response = await axios.post('http://localhost:5000/api/amenities/uploadImage', formData, {
+    const response = await axios.post( `${baseurl}/api/amenities/uploadImage`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -634,7 +634,7 @@ const [mapCenter, setMapCenter] = useState([0, 0]); // Initial state with two nu
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/amenities/uploadImage",
+        `${baseurl}/api/amenities/uploadImage`,
         formData,
         {
           headers: {

@@ -35,6 +35,8 @@ import Transition from "../Master/Transition";
 import PropertiesDetails from "./PropertiesDetails";
 import Testinomial from "./Testinomial";
 import TrendingProperties from "./TrendingProperties";
+import Request from "./Request";
+import Schedule from "./Schedule";
 // properties-details
 
 import Properties from "./Properties";
@@ -109,6 +111,12 @@ const AdminPanel = () => {
 
         case "trendingProperties":
         return <TrendingProperties/>;
+
+        case "request":
+        return <Request/>;
+
+        case "schedule":
+        return <Schedule/>;
         
     }
   };
@@ -119,6 +127,8 @@ const AdminPanel = () => {
     { key: "properties", icon: <CarryOutOutlined />, label: "Properties" },
     { key: "testinomial", icon: <CalendarOutlined />, label: "Testinomial" },
     { key: "trendingProperties", icon: <EnvironmentOutlined />, label: "Trending Properties" },
+    { key: "request", icon: <CarOutlined />, label: "Request" },
+    { key: "schedule", icon: <CarOutlined />, label: "Schedule" },
     // EnvironmentOutlined
     {
       key: "master-card",
