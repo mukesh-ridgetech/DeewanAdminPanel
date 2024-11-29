@@ -65,7 +65,7 @@ const Amenties = () => {
 
        if(response){
         message.success("Status updated succesfully")
-        fetchData()
+        fetchAllAmenties()
        }
     } catch (error) {
       console.log(error)

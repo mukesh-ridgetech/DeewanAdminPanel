@@ -37,15 +37,17 @@ import Testinomial from "./Testinomial";
 import TrendingProperties from "./TrendingProperties";
 import Request from "./Request";
 import Schedule from "./Schedule";
+import Message from "./Message";
+import BlogList from "./BlogList";
 // properties-details
 
 import Properties from "./Properties";
-import logo from '../../public/images/dewanLogo.png'
+import logo from "../../public/images/dewanLogo.png";
 
 const AdminPanel = () => {
   const [selectedTab, setSelectedTab] = useState("dashboard");
-  const[id,setId] = useState();
- const navigate= useNavigate();
+  const [id, setId] = useState();
+  const navigate = useNavigate();
 
   const handleMenuClick = (e) => {
     setSelectedTab(e.key);
@@ -80,44 +82,49 @@ const AdminPanel = () => {
       case "amenties-master":
         return <Amenties />;
 
-        case "furnished-master":
+      case "furnished-master":
         return <Furnished />;
 
-
-        case "flooring-master":
+      case "flooring-master":
         return <Flooring />;
 
-        case "fencing-master":
+      case "fencing-master":
         return <Fencing />;
 
-        case "parking-master":
+      case "parking-master":
         return <Parking />;
 
-        case "neighbourhood-master":
+      case "neighbourhood-master":
         return <Neighbourhood />;
 
-        case "transition-master":
+      case "transition-master":
         return <Transition />;
 
-        case "properties":
-        return <Properties setSelectedTab={setSelectedTab}  setId={setId}/>;
+      case "properties":
+        return <Properties setSelectedTab={setSelectedTab} setId={setId} />;
 
-        case "properties-details":
-        return <PropertiesDetails id={id}/>;
+      case "properties-details":
+        return <PropertiesDetails id={id} />;
 
-        case "testinomial":
-        return <Testinomial/>;
+      case "testinomial":
+        return <Testinomial />;
 
+      case "trendingProperties":
+        return <TrendingProperties />;
 
-        case "trendingProperties":
-        return <TrendingProperties/>;
+      case "request":
+        return <Request />;
 
-        case "request":
-        return <Request/>;
+      case "schedule":
+        return <Schedule />;
 
-        case "schedule":
-        return <Schedule/>;
-        
+      case "message":
+        return <Message />;
+
+      case "blog":
+        return <BlogList />;
+
+      // BlogList
     }
   };
 
@@ -126,9 +133,15 @@ const AdminPanel = () => {
     { key: "users", icon: <TeamOutlined />, label: "Users" },
     { key: "properties", icon: <CarryOutOutlined />, label: "Properties" },
     { key: "testinomial", icon: <CalendarOutlined />, label: "Testinomial" },
-    { key: "trendingProperties", icon: <EnvironmentOutlined />, label: "Trending Properties" },
+    {
+      key: "trendingProperties",
+      icon: <EnvironmentOutlined />,
+      label: "Trending Properties",
+    },
     { key: "request", icon: <CarOutlined />, label: "Request" },
     { key: "schedule", icon: <CarOutlined />, label: "Schedule" },
+    { key: "message", icon: <CarOutlined />, label: "Message" },
+    { key: "blog", icon: <CarOutlined />, label: "Blog" },
     // EnvironmentOutlined
     {
       key: "master-card",
@@ -140,12 +153,15 @@ const AdminPanel = () => {
   return (
     <Layout style={{ minHeight: "100vh", maxWidth: "100vw" }}>
       <Header className="header">
-      <div className="logo-vinMart">
+        <div className="logo-vinMart">
           <img src={logo} alt="dewanRealty Logo" />
         </div>
 
-
-        <Button type="primary" onClick={handleLogout}  style={{ marginLeft: '20px' }}>
+        <Button
+          type="primary"
+          onClick={handleLogout}
+          style={{ marginLeft: "20px" }}
+        >
           Logout
         </Button>
       </Header>

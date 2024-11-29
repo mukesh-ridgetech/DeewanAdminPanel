@@ -72,12 +72,12 @@ const Testinomial = () => {
   const handleStatusToggle = async (record) => {
     try {
       const response = await axios.patch(
-        `${baseurl}/api/amenities/toggled/${record._id}`
+        `${baseurl}/api/testinomial/toggled/${record._id}`
       );
       console.log(response);
 
       if (response) {
-        message.success("Status updated succesfully");
+        message.success("Status Updated Succesfully");
         fetchTestinomial();
       }
     } catch (error) {
@@ -86,8 +86,7 @@ const Testinomial = () => {
   };
 
   const handleAdd = () => {
-
-    setImages([])
+    setImages([]);
     setEditingTestinomial(null);
     form.resetFields();
     setIsModalOpen(true);
@@ -103,9 +102,9 @@ const Testinomial = () => {
       description: record.description,
     });
 
-    if(record.images){
-        setImages(record.images)
-      }
+    if (record.images) {
+      setImages(record.images);
+    }
     setIsModalOpen(true);
   };
 
@@ -180,11 +179,11 @@ const Testinomial = () => {
 
   const handlePost = async (values) => {
     const postdata = {
-        name: values.name,
-        location: values.location,
-        description: values.description,
-        rating: values.rating,
-        images:images
+      name: values.name,
+      location: values.location,
+      description: values.description,
+      rating: values.rating,
+      images: images,
     };
 
     try {
@@ -208,20 +207,18 @@ const Testinomial = () => {
   };
 
   const handlePut = async (values) => {
-
     // "name":"John",
     // "location":"GuruGram",
     // "description":"Diwan Realty truly cares about their clients. They listened to my needs and preferences and helped me find the perfect home in the Bay Area. Their professionalism and attention to detail are unmatched.",
     // "images":["/uploads/image-1731649898756-499717835.png","/uploads/image-1731649898756-499717835.png"],
     // "rating":4.5
 
-
     const postdata = {
       name: values.name,
       location: values.location,
       description: values.description,
       rating: values.rating,
-      images:images
+      images: images,
     };
 
     try {
@@ -277,18 +274,18 @@ const Testinomial = () => {
       key: "description",
     },
 
-    // {
-    //   title: "Status",
-    //   key: "status",
-    //   render: (_, record) => (
-    //     <Switch
-    //       checked={record.status === "Active"}
-    //       onChange={() => handleStatusToggle(record)}
-    //       checkedChildren="Active"
-    //       unCheckedChildren="Inactive"
-    //     />
-    //   ),
-    // },
+    {
+      title: "Status",
+      key: "status",
+      render: (_, record) => (
+        <Switch
+          checked={record.status === "Active"}
+          onChange={() => handleStatusToggle(record)}
+          checkedChildren="Active"
+          unCheckedChildren="Inactive"
+        />
+      ),
+    },
 
     {
       title: "Actions",

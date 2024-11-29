@@ -10,119 +10,125 @@ import {
   Upload,
   Switch,
 } from "antd";
-import {
-  BellOutlined,
-  TranslationOutlined,
-  TruckOutlined,
-  CloseCircleOutlined,
-} from "@ant-design/icons";
-import { UploadOutlined } from "@ant-design/icons";
+import { BellOutlined,TranslationOutlined ,TruckOutlined ,CloseCircleOutlined } from "@ant-design/icons";
+import { UploadOutlined } from '@ant-design/icons';
 import { baseurl } from "../helper/Helper";
 import axios from "axios";
 import Password from "antd/es/input/Password";
 // import { baseurl } from "../helper/Helper";
 import { useAuth } from "../context/auth";
 
+
 const FencingData = [
   { id: 1, name: "North", value: "North" },
   { id: 1, name: "South", value: "South" },
   { id: 1, name: "East", value: "East" },
   { id: 1, name: "West", value: "West" },
-];
+]
 
-const Request = () => {
+
+
+
+
+
+const Message = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingRequest, setEditingRequest] = useState(null);
-  const [image1, setImage] = useState();
+  const[image1,setImage] = useState();
   const [form] = Form.useForm();
   const [auth, setAuth] = useAuth();
   const [photo, setPhoto] = useState("");
-  const [imageTrue, setImageTrue] = useState(false);
+  const [imageTrue,setImageTrue] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState("");
 
+
+  
   // http://localhost:5000/api/amenities/getAmenties
   useEffect(() => {
-    fetchRequest();
+    fetchMessage();
   }, []);
 
-  const fetchRequest = async () => {
+  const fetchMessage = async () => {
     setLoading(true);
     try {
-      const respons = await axios.get(baseurl + "/api/contact/getContact");
-      console.log(respons.data.data);
+       const respons = await axios.get( baseurl+'/api/massage/getMessage')
+       console.log("message is",respons.data);
 
-      if (respons.data) {
-        setData(respons.data.data);
-      }
-
-      //   message.success('Country codes fetched successfully!');
+       if(respons.data){
+        setData(respons.data);
+        
+       }
+     
+    //   message.success('Country codes fetched successfully!');
     } catch (error) {
-      console.error("Error fetching Fencing:", error);
-      message.error("Error fetching Fencing.");
+      console.error('Error fetching Fencing:', error);
+      message.error('Error fetching Fencing.');
     } finally {
       setLoading(false);
     }
   };
 
-  const handleStatusToggle = async (record) => {
-    try {
-      const response = await axios.patch(
-        `${baseurl}/api/contact/toggled/${record._id}`
-      );
-      console.log(response);
 
-      if (response) {
-        message.success("Status Updated Succesfully");
-        fetchRequest();
-      }
+  const handleStatusToggle = async(record)=>{
+    try {
+       const response = await axios.patch(`${baseurl}/api/massage/toggled/${record._id}`)
+       console.log(response)
+
+       if(response){
+        message.success("Status updated succesfully")
+        fetchMessage()
+       }
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  };
+}
+
+
+ 
+  
+
+ 
+
 
   const columns = [
-    {
-      title: "Name",
-      dataIndex: "name",
-      key: "name",
-    },
+   
+
 
     {
-      title: "Email",
-      dataIndex: "email",
-      key: "email",
-    },
+        title: "Email",
+        dataIndex: "email",
+        key: "email",
+      },
 
-    {
-      title: "Phone",
-      dataIndex: "phone",
-      key: "phone",
-    },
 
-    {
-      title: "Message",
-      dataIndex: "massage",
-      key: "name",
-    },
+    
+
+
+
+
+    
 
     {
       title: "Status",
-      key: "status",
+      key: "Status",
       render: (_, record) => (
         <Switch
-          checked={record.status === "Active"}
+          checked={record.Status === "Active"}
           onChange={() => handleStatusToggle(record)}
           checkedChildren="Active"
           unCheckedChildren="Inactive"
         />
       ),
     },
+
+    
   ];
 
   return (
     <div>
+      
       <Table
         columns={columns}
         dataSource={data}
@@ -133,4 +139,4 @@ const Request = () => {
   );
 };
 
-export default Request;
+export default Message;

@@ -1,67 +1,56 @@
+import React from "react";
+import "../Style/MasterCards.css";
 
-import React from 'react';
-import '../Style/MasterCards.css';
+const MasterCards = ({ setSelectedTab }) => {
+  const handleCardClick = (tabKey) => {
+    setSelectedTab(tabKey);
+  };
 
+  return (
+    <div className="master-cards">
+      <div className="card" onClick={() => handleCardClick("amenties-master")}>
+        Amenties
+      </div>
 
-const MasterCards = ({ setSelectedTab }) =>
-{
+      <div className="card" onClick={() => handleCardClick("builder-master")}>
+        Builders
+      </div>
 
-    const handleCardClick = (tabKey) =>
-    {
-        setSelectedTab(tabKey);
-    };
+      <div className="card" onClick={() => handleCardClick("location-master")}>
+        Location
+      </div>
 
-    return (
-        <div className="master-cards">
-            <div className="card" onClick={() => handleCardClick('amenties-master')}>
-                Amenties
-            </div>
+      <div className="card" onClick={() => handleCardClick("overview-master")}>
+        Overview
+      </div>
 
-            <div className="card" onClick={() => handleCardClick('builder-master')}>
-                Builders
-            </div>
+      <div className="card" onClick={() => handleCardClick("furnished-master")}>
+        Funishied
+      </div>
 
-            <div className="card" onClick={() => handleCardClick('location-master')}>
-               Location
-            </div>
+      <div className="card" onClick={() => handleCardClick("parking-master")}>
+        Parking
+      </div>
 
-            <div className="card" onClick={() => handleCardClick('overview-master')}>
-                Overview
-            </div>
+      <div className="card" onClick={() => handleCardClick("flooring-master")}>
+        Flooring
+      </div>
 
-            <div className="card" onClick={() => handleCardClick('furnished-master')}>
-                Funishied
-            </div>
+      <div className="card" onClick={() => handleCardClick("fencing-master")}>
+        Fencing
+      </div>
 
-
-            <div className="card" onClick={() => handleCardClick('parking-master')}>
-                Parking
-            </div>
-
-            <div className="card" onClick={() => handleCardClick('flooring-master')}>
-                Flooring
-            </div>
-
-            <div className="card" onClick={() => handleCardClick('fencing-master')}>
-                Fencing
-            </div>
-
-            <div className="card" onClick={() => handleCardClick('neighbourhood-master')}>
+      {/* <div className="card" onClick={() => handleCardClick('neighbourhood-master')}>
             Neighbourhood
-            </div>
+            </div> */}
 
-
-            <div className="card" onClick={() => handleCardClick('transition-master')}>
+      {/* <div className="card" onClick={() => handleCardClick('transition-master')}>
              Transition
-            </div>
+            </div> */}
 
-
-            {/* Neighbourhood */}
-           
-
-
-        </div>
-    );
+      {/* Neighbourhood */}
+    </div>
+  );
 };
 
 export default MasterCards;

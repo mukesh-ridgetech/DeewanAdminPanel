@@ -64,6 +64,20 @@ const Builder = () => {
     }
   };
 
+  const handleStatusToggle = async(record)=>{
+    try {
+       const response = await axios.patch(`${baseurl}/api/builders/toggled/${record._id}`)
+       console.log(response)
+
+       if(response){
+        message.success("Status Updated Succesfully")
+        fetchAllAmenties()
+       }
+    } catch (error) {
+      console.log(error)
+    }
+}
+
 
   const handleChange = (values) => {
     setSelectedLocation(values);
@@ -236,7 +250,7 @@ const Builder = () => {
       render: (_, record) => (
         <Switch
           checked={record.status === "Active"}
-          // onChange={() => handleStatusToggle(record)}
+          onChange={() => handleStatusToggle(record)}
           checkedChildren="Active"
           unCheckedChildren="Inactive"
         />

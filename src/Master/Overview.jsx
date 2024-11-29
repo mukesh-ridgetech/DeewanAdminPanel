@@ -76,6 +76,20 @@ const Overview = () => {
     }
   };
 
+
+  const handleStatusToggle = async(record)=>{
+    try {
+       const response = await axios.patch(`${baseurl}/api/overviews/toggled/${record._id}`)
+       console.log(response)
+
+       if(response){
+        message.success("Status Updated Succesfully")
+        fetchAllOverview()
+       }
+    } catch (error) {
+      console.log(error)
+    }
+}
   
 
   const handleAdd = () => {
@@ -227,7 +241,7 @@ const Overview = () => {
       render: (_, record) => (
         <Switch
           checked={record.status === "Active"}
-          // onChange={() => handleStatusToggle(record)}
+          onChange={() => handleStatusToggle(record)}
           checkedChildren="Active"
           unCheckedChildren="Inactive"
         />
