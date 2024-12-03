@@ -388,7 +388,8 @@ const TrendingProperties = () => {
               {filteredProperties?.map((property) => (
                 <Option key={property._id} value={property._id}>
                   {console.log("property.propertiesName", property)}
-                  {property.propertiesName}
+                  {property.propertiesName}-{property?.location?.city}-
+                  {property?.location?.sector}
                 </Option>
               ))}
             </Select>
